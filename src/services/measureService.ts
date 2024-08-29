@@ -8,8 +8,6 @@ const prisma = new PrismaClient();
 export const thereIsSameMeasureType = async (customer_code: string, measure_datetime: string, mensureType : MeasureType) => {
     try{
 
-        var measureDate = new Date(measure_datetime);
-
         return await prisma.measures.findFirst({
             where:{
                 measure_type: mensureType,
@@ -30,6 +28,8 @@ export const Add = async (data: CreateMeasure) => {
     try{
         return await prisma.measures.create({data});
     }catch(error){
+        console.log("erro measureService.Add")
+        console.log(error);
         return false
     }
 }

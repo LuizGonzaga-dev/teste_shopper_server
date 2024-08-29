@@ -4,10 +4,6 @@ import { Base64 } from 'js-base64';
 const measureTypeEnum = z.enum(['WATER', 'GAS']);
 
 export const uploadImageSchema = z.object({
-    // image: z.string().refine(val => /^data:image\/(png|jpeg|jpg);base64,/.test(val), {
-    //     message: 'A imagem deve estar no formato base64.',
-    // }),
-    // image: z.string().refine(Base64.isValid, {message: 'A imagem deve estar no formato base64.'}),
     image: z.string().refine(val => {
         const base64PrefixPattern = /^data:image\/(png|jpeg|jpg);base64,/;
         return base64PrefixPattern.test(val) && Base64.isValid(val.split(',')[1]);

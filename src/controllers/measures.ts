@@ -42,7 +42,7 @@ export const upload: RequestHandler = async (req, res) => {
     }
 
     //pede para IA fazer a medição
-    const geminiImgInfos = await geminiVisionService.getMeasureValue(uploadResponse, measure_type);
+    const geminiImgInfos = await geminiVisionService.getMeasureValue(uploadResponse);
 
     if(!geminiImgInfos){
         return res.status(409).json({
@@ -50,9 +50,8 @@ export const upload: RequestHandler = async (req, res) => {
             error_description: 'Houve um erro ao consultar a medição com a IA',
         });
     }
-
     //salva o valor da medição da IA na variavel abaixo
-    var ia_measure_value = geminiImgInfos.response.text();
+    var ia_measure_value = parseInt((geminiImgInfos.response.text() as string).trim());
 
     var measureData : CreateMeasure = {
         has_confirmed: false,

@@ -1,6 +1,5 @@
 import {PrismaClient} from "@prisma/client";
 import { CreateCustomer } from "../types/CreateCustomer";
-import { string } from "zod";
 
 const prisma = new PrismaClient();
 
