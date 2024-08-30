@@ -17,10 +17,12 @@ datasource db {
 model Customer {
   id          String           @id @default(uuid())
   name        String
-  measures    Measures[]
+  measures    Measure[]
+
+  @@map("Customers")
 }
 
-model Measures {
+model Measure {
   uuid        String           @id @default(uuid())
   customer_code String
   measure_datetime DateTime
@@ -29,4 +31,6 @@ model Measures {
   image_url String
   has_confirmed Boolean
   customer Customer @relation(fields: [customer_code], references: [id])
+
+  @@map("Measures")
 }
