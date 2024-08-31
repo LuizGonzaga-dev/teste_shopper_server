@@ -129,6 +129,8 @@ Ela irá retornar:
 
 git clone https://github.com/LuizGonzaga-dev/teste_shopper_server.git
 
+**3. Coloque sua API Key do Gemini na variável de ambiente GEMINI_API_KEY (raiz -> .env)**
+
 **2. Tenha o Docker e rode o seguinte comando na raiz do projeto:**
 
 docker-compose up --build
